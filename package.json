@@ -1,0 +1,25 @@
+{
+  "name": "workboot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && ava",
+    "build:doc": "jsdoc src/js/ -c jsdoc.conf.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awesomes-cn/workboot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/awesomes-cn/workboot/issues"
+  },
+  "homepage": "https://github.com/awesomes-cn/workboot#readme",
+  "devDependencies": {
+    "ava": "^0.13.0",
+    "standard": "^6.0.8",
+    "minami": "^1.1.1"
+  }
+}
