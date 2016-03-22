@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>Game.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,25 +28,53 @@
 
 <div id="main">
     
+    <h1 class="page-title">Game.js</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * 比赛模块
+ * @class
+ */
+class Game {
+  
+  /**
+   * 构建函数
+   * @param  {string} x [description]
+   * @param  {string} y [description]
+   * @return {void}   [description]
+   */
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  
+  /**
+   * * 转换字符串
+   * @return {string} 组合语句
+   */
+  toString() {
+    return '(' + this.x + ', ' + this.y + ')';
+  }
 
+  /**
+   * 开始比赛
+   * @return {string} 提示比赛开始了
+   */
+  play() {
+    return "开始比赛了"
+  }
 
-
-
-
-
-
-
-
-    
-
-
-
+}
+</code></pre>
+        </article>
+    </section>
 
 
 
