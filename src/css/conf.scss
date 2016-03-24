@@ -1,0 +1,13 @@
+/* 公共变量 */
+$site_bg_color: #EEE;
+$font-color: #333;
+
+
+/* 公共样式 */
+.center{text-align: center}
+.clear{clear: both}
+
+@mixin left($value: 10px){
+  float: left;
+  margin-left: $value;
+}

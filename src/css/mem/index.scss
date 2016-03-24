@@ -1,0 +1,12 @@
+@import "../conf.scss";
+
+
+html{
+  background-color: $site_bg_color;
+  color: $font-color;
+}
+
+div.main{
+  @extend .clear;
+  @include left(100px);
+}

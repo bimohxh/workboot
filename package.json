@@ -6,7 +6,9 @@
   "scripts": {
     "test": "ava",
     "build:doc": "jsdoc src/js/ -c jsdoc.conf.json",
-    "build:babel": "babel src/js -d dist/js"
+    "build:babel": "babel src/js -d dist/js",
+    "build:js": "npm run build:babel && webpack",
+    "build:sass": "node-sass src/css/ -o  dist/css/"
   },
   "repository": {
     "type": "git",
@@ -26,7 +28,8 @@
     "babel-preset-es2015": "^6.6.0",
     "webpack": "^1.12.14",
     "babel-preset-stage-2": "^6.5.0",
-    "babel-register": "^6.7.2"
+    "babel-register": "^6.7.2",
+    "node-sass": "^3.4.2"
   },
   "ava": {
     "files": [
