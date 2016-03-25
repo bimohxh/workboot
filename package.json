@@ -4,15 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "eslint": "eslint src/js/index.js",
-    "test": "ava && npm run eslint",
-    "build:doc": "jsdoc src/js/ -c jsdoc.conf.json",
-    "build:babel": "babel src/js -d dist/js",
-    "minify:js": "node tool/minify_js.js",
-    "build:js": "npm run build:babel && webpack && npm run minify:js",
-    "build:sass": "node-sass src/css/ -o  dist/css/",
-    "build:css": "npm run build:sass",
-    "build:all": "npm run test && npm run build:doc && npm run build:js && npm run build:css "
+    "build": "node tool/build"
   },
   "repository": {
     "type": "git",
