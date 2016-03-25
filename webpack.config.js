@@ -1,12 +1,11 @@
-var webpack = require("webpack")
+var webpack = require("webpack"),
+    WH = require("./tool/webpack_helper");
 
 
 module.exports = {
-  entry: {
-    controller: "./dist/js/index.js"
-  },
+  entry: WH.makeEntry(),
   output: {
-    path: __dirname + "/dist/js",
+    path: __dirname + "/dist/js/controller",
     filename: "[name].js"
   },
   resolve: {
@@ -18,3 +17,4 @@ module.exports = {
     new webpack.optimize.LimitChunkCountPlugin({maxChunks: 1})
   ]
 }
+ 

@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "eslint": "eslint src/js/index.js",
-    "test": "ava",
+    "test": "ava && npm run eslint",
     "build:doc": "jsdoc src/js/ -c jsdoc.conf.json",
     "build:babel": "babel src/js -d dist/js",
-    "build:js": "npm run build:babel && webpack",
-    "build:sass": "node-sass src/css/ -o  dist/css/"
+    "minify:js": "node tool/minify_js.js",
+    "build:js": "npm run build:babel && webpack && npm run minify:js",
+    "build:sass": "node-sass src/css/ -o  dist/css/",
+    "build:css": "npm run build:sass",
+    "build:all": "npm run test && npm run build:doc && npm run build:js && npm run build:css "
   },
   "repository": {
     "type": "git",
@@ -32,7 +35,10 @@
     "eslint-plugin-react": "^4.2.3",
     "minami": "^1.1.1",
     "node-sass": "^3.4.2",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.14",
+    "fs-extra": "^0.26.7",
+    "uglify-js": "^2.6.2",
+    "colors": "^1.1.2"
   },
   "ava": {
     "files": [

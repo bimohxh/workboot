@@ -1,10 +1,5 @@
 'use strict';
 
-/**
- * 比赛模块
- * @class
- */
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -13,8 +8,12 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Game = function () {
+/**
+ * 比赛模块
+ * @class
+ */
 
+var Game = function () {
   /**
    * 构建函数
    * @param  {string} x [description]
@@ -28,7 +27,6 @@ var Game = function () {
     this.x = x;
     this.y = y;
   }
-
   /**
    * * 转换字符串
    * @return {string} 组合语句
@@ -49,7 +47,7 @@ var Game = function () {
   }, {
     key: 'play',
     value: function play() {
-      return "开始比赛了";
+      return "start";
     }
 
     /**
