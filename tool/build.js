@@ -3,60 +3,49 @@
 const exec = require('child_process').execSync,
       Helper = require('./helper'),
       path = require('path'),
-      DistFolder = "./dist/js/controller",
       colors = require('colors'),
-      PC = require('../project.config');
+      TC = require('../task.config'),
+      tasks = TC.tasks,
+      group = TC.group;
 
 
-
-
-const tasks = {
-  'eslint': {
-    cmd: 'eslint src/js/index.js',
-    tip: '语法检测'
-  },
-  'test': {
-    cmd: 'ava',
-    tip: '单元测试'
-  },
-  'doc': {
-    cmd:  'jsdoc src/js/ -c jsdoc.conf.json',
-    tip: '文档生成'
-  },
-  'babel': {
-    cmd: 'babel src/js -d dist/js',
-    tip: 'bable ES6转换ES5'
-  },
-  'minify:js': {
-    cmd: 'node tool/minify_js.js',
-    tip: 'JS 压缩'
-  },
-  'webpack': {
-    cmd: 'webpack',
-    tip: 'webpack 打包JS'
-  },
-  'sass': {
-    cmd: 'node-sass src/css/ -o  dist/css/',
-    tip: 'Sass预处理'
+// npm run build css
+const arg = process.argv[2]
+/**
+ * 根据用户输入的参数执行对应的命令组
+ */
+let getCmds = ()=> { 
+  if (arg) {
+    if(group[arg]){
+      return group[arg].map((item)=> {
+        return tasks[item]
+      })
+    }
+    if (tasks[arg]) return [tasks[arg]]
   }
   
-}
 
-
-
-let buildg =  ()=> {
-  var start = Date.now();
-  for(let key in tasks){
-    console.log(('开始 [' + tasks[key].tip.green + '] ...'))
-    exec(tasks[key].cmd)
-    console.log(('[' + tasks[key].tip.green + '] 完成'))
+  let ts = []
+  for(let item in tasks){
+    ts.push(tasks[item])
   }
-  console.log('打包结束，耗时 ' + timeDiff(start)+ ' 秒'.green)
+  return ts
 }
 
-buildg = ()=> {
-  console.log(arg)
+
+let build =  ()=> { 
+  let start = Date.now()
+  let prev = Date.now()
+  getCmds().forEach((item)=> {
+    console.log(('[' + item.tip.green + '] 开始 ...'))
+    exec(item.cmd)
+    console.log(('[' + item.tip.green + '] 完成，耗时 ' + timeDiff(prev) + ' 秒'))
+    prev = Date.now()
+  })
+  console.log('打包结束，耗时 ' + timeDiff(start) + ' 秒'.green)
 }
+
+
 
 /*let build = ()=> {
   let cmds = [
@@ -84,5 +73,4 @@ let timeDiff = (start)=> {
   return (Date.now() - start) / 1000 
 }
 
-
-buildg();
+build()

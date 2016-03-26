@@ -22,6 +22,21 @@ let walk = (dir,level)=> {
   return getFilesByLevel(dir, results, level)
 }
 
+let walkDirectory = (dir,level)=> {
+  let results = []
+  let list = fs.readdirSync(dir)
+  list.forEach((file)=> {
+      file = dir + '/' + file
+      var stat = fs.statSync(file)
+      if (stat && stat.isDirectory()){
+        results.push(file)
+        results = results.concat(walkDirectory(file))
+      }
+  })
+
+  return getFilesByLevel(dir, results, level)
+}
+
 /**
  * 过滤出指定层级的文件
  * @param  {string} files 要过滤的文件集合
@@ -37,6 +52,8 @@ let getFilesByLevel = (dir, files, level)=> {
 }
 
 
+ 
 module.exports = {
-  walk: walk
+  walk: walk,
+  walkDirectory: walkDirectory
 }

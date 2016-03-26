@@ -6,4 +6,3 @@ var game = new _Game.Game();
 var hello = function hello(a, b) {
   return a + b;
 };
-alert(game.play());

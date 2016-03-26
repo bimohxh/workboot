@@ -4,4 +4,4 @@ const game = new Game()
 const hello = function(a, b) {
   return a + b
 }
-console.log("I am here")
+console.log('I am here')

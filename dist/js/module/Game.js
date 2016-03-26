@@ -47,9 +47,8 @@ var Game = function () {
   }, {
     key: 'play',
     value: function play() {
-      return "start";
+      return 'start';
     }
-
     /**
      * 计算两个数字的乘积
      * @param  {number} num1 第一个数字

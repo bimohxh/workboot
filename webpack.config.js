@@ -1,11 +1,12 @@
 var webpack = require("webpack"),
+    PC = require("./project.config"),
     WH = require("./tool/webpack_helper");
 
 
 module.exports = {
   entry: WH.makeEntry(),
   output: {
-    path: __dirname + "/dist/js/controller",
+    path: __dirname + PC.js.webpack,
     filename: "[name].js"
   },
   resolve: {

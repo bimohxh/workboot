@@ -2,7 +2,8 @@
 const fse = require('fs-extra'),
       path = require('path'),
       Helper = require('./helper'),
-      DistFolder = "./dist/js/controller";
+      PC = require("../project.config"),
+      DistFolder = PC.js.webpack;
 
 let makeEntry = ()=> { 
   return Helper.walk(DistFolder, 2).reduce((last, item)=> {
